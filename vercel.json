@@ -6,6 +6,11 @@
       "use": "@vercel/node"
     }
   ],
+  "functions": {
+    "src/server.js": {
+      "includeFiles": ["node_modules/better-sqlite3/**"]
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
