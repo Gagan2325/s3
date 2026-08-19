@@ -1,0 +1,19 @@
+services:
+  media-store:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - STORAGE_ROOT=/app/data/objects
+      - DB_PATH=/app/data/metastore.db
+      - API_KEYS=${API_KEYS:-change-me-dev-key}
+      - PRESIGN_SECRET=${PRESIGN_SECRET:-change-me-presign-secret}
+      - PUBLIC_BASE_URL=${PUBLIC_BASE_URL:-http://localhost:4000}
+      - MAX_UPLOAD_BYTES=5368709120
+    volumes:
+      - media-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  media-data:

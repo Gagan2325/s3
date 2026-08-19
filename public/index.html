@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>media-store · console</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="frame">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">▣</span>
+        <span class="brand-name">media-store</span>
+      </div>
+      <div class="key-entry">
+        <label for="apiKey">key</label>
+        <input id="apiKey" type="password" placeholder="paste API key" autocomplete="off" />
+        <button id="saveKey">connect</button>
+        <span id="keyStatus" class="status-dot" title="not connected"></span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel bucket-panel">
+        <div class="panel-head">
+          <h2>buckets</h2>
+          <span class="count" id="bucketCount">0</span>
+        </div>
+        <form id="newBucketForm" class="inline-form">
+          <input id="newBucketName" placeholder="new-bucket-name" />
+          <button type="submit">create</button>
+        </form>
+        <ul id="bucketList" class="ledger"></ul>
+      </section>
+
+      <section class="panel object-panel">
+        <div class="panel-head">
+          <h2 id="currentBucketLabel">select a bucket</h2>
+          <span class="count" id="objectCount">0</span>
+        </div>
+
+        <div id="uploadZone" class="upload-zone" hidden>
+          <input type="file" id="fileInput" multiple />
+          <div class="upload-hint">drop files here, or click to choose</div>
+        </div>
+
+        <table class="manifest" id="objectTable" hidden>
+          <thead>
+            <tr>
+              <th>key</th>
+              <th>size</th>
+              <th>type</th>
+              <th>updated</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="objectRows"></tbody>
+        </table>
+
+        <div id="emptyState" class="empty-state">
+          <p>no bucket selected</p>
+          <p class="muted">choose or create a bucket on the left to see its contents</p>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
