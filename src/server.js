@@ -47,7 +47,11 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-app.listen(PORT, () => {
-  console.log(`media-store listening on http://localhost:${PORT}`);
-  console.log(`Admin UI: http://localhost:${PORT}/admin`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`media-store listening on http://localhost:${PORT}`);
+    console.log(`Admin UI: http://localhost:${PORT}/admin`);
+  });
+}
+
+module.exports = app;
