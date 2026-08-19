@@ -2,7 +2,7 @@ const Database = require('better-sqlite3');
 const fs = require('fs');
 const path = require('path');
 
-const DB_PATH = process.env.DB_PATH || './data/metastore.db';
+const DB_PATH = process.env.DB_PATH || (process.env.VERCEL ? '/tmp/metastore.db' : './data/metastore.db');
 
 fs.mkdirSync(path.dirname(DB_PATH), { recursive: true });
 

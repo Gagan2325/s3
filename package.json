@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Self-hosted S3-style object storage service",
   "main": "src/server.js",
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js"

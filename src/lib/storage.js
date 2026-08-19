@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const STORAGE_ROOT = process.env.STORAGE_ROOT || './data/objects';
+const STORAGE_ROOT = process.env.STORAGE_ROOT || (process.env.VERCEL ? '/tmp/media-store-objects' : './data/objects');
 
 function objectPath(bucket, key) {
   // Namespace by bucket, then hash the key into subdirectories so a bucket
